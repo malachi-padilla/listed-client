@@ -16,6 +16,7 @@ html {
 
 body{
 	overflow-x: hidden;
+	font-family: 'Montserrat', sans-serif;
 
 }
 a{
