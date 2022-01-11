@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { MainBtn } from '../../theme/btns';
+import { MainInput } from '../../theme/layout/customComponents';
 
 export const NavContainer = styled.div`
 	width: 100vw;
@@ -26,6 +27,7 @@ export const Logo = styled.h2`
 	font-size: 3.5rem;
 	text-transform: lowercase;
 	font-family: 'Fugaz One', cursive;
+	cursor: pointer;
 `;
 
 export const NavForm = styled.form`
@@ -44,4 +46,14 @@ export const BtnSecondary = styled(MainBtn)`
 	background-color: ${(props) => props.theme.colors.main};
 	color: ${(props) => props.theme.colors.primary};
 	border: 0.1rem solid ${(props) => props.theme.colors.primary};
+`;
+
+export const NavInput = styled(MainInput)``;
+
+export const NavBtns = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
 `;
