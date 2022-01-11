@@ -36,7 +36,7 @@ export default function Login() {
 			<ToastContainer />
 			<MainFormContainer onSubmit={login}>
 				<FormHeader>Hello!</FormHeader>
-				<FormSubHeader>sign into your account here.</FormSubHeader>
+				<FormSubHeader>Sign into your account here.</FormSubHeader>
 				<FormInput type='email' required='true' placeholder='Email' onChange={(e) => setLoginEmail(e.target.value)} />
 				<FormInput
 					type='password'

@@ -32,7 +32,7 @@ export const FormHeader = styled.h2`
 export const FormSubHeader = styled.h3`
 	color: ${(props) => props.theme.colors.darkGrey};
 	font-size: 1.6rem;
-	text-transform: capitalize;
+	text-transform: none;
 	font-weight: 400;
 `;
 

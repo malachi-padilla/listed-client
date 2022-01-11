@@ -37,7 +37,7 @@ export default function Register() {
 		<RegisterPageContainer>
 			<MainFormContainer onSubmit={register}>
 				<FormHeader>Join Listed</FormHeader>
-				<FormSubHeader>sell anything. </FormSubHeader>
+				<FormSubHeader>Sell anything. </FormSubHeader>
 				<FormInput
 					type='email'
 					required='true'
