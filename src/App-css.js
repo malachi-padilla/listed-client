@@ -23,6 +23,7 @@ export const PageContainer = styled.div`
 	width: 75%;
 	align-items: center;
 	justify-content: center;
+	position: relative;
 	@media (max-width: 1024px) {
 		width: 100%;
 	}
