@@ -14,7 +14,7 @@ export const MainContainer = styled.div`
 `;
 
 export const MainFormContainer = styled.form`
-	height: 50%;
+	height: 70%;
 	width: 40%;
 	display: flex;
 	flex-direction: column;

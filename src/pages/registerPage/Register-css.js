@@ -12,6 +12,7 @@ export const FormInput = styled(MainInput)`
 	::placeholder {
 		font-size: 1.6rem;
 	}
+	border: ${(props) => (props.error ? ` 1px solid ${props.theme.colors.errorRed} ` : null)};
 `;
 
 export const FormBtn = styled(MainBtn)`

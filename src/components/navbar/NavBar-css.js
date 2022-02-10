@@ -9,13 +9,13 @@ export const NavContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	z-index: 10;
-	box-shadow: 0.1rem 0.1rem 0.6rem rgba(0, 0, 0, 0.2);
+	box-shadow: 0.1rem 0.1rem 0.6rem rgba(0, 0, 0, 0.1);
 	background-color: ${(props) => props.theme.colors.main};
 `;
 
 export const NavContent = styled.div`
 	height: 100%;
-	width: 90%;
+	width: 97%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;

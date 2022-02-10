@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword, getAuth } from '@firebase/auth';
 import { useNavigate } from 'react-router';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { LoginPageContainer } from './Login-css';
 import { MainFormContainer } from '../../theme/layout/containers';
 import { FormBtn, FormHeader, FormInput, FormLink, FormSubHeader } from '../registerPage/Register-css';
@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 export default function Login() {
 	const [loginEmail, setLoginEmail] = useState('');
 	const [loginPassword, setLoginPassword] = useState('');
+	const [loginError, setLoginError] = useState(false);
 	let navigate = useNavigate();
 
 	const login = (e) => {
@@ -24,24 +25,32 @@ export default function Login() {
 			.catch((error) => {
 				console.error(error.code);
 				if (error.code === 'auth/wrong-password') {
-					console.log('toast');
 					toast.error('Please check the Password');
+					setLoginError(true);
 				} else if (error.code === 'auth/invalid-email') {
 					toast.error('Please check the Email');
+					setLoginError(true);
 				}
 			});
 	};
+
 	return (
 		<LoginPageContainer>
-			<ToastContainer />
 			<MainFormContainer onSubmit={login}>
 				<FormHeader>Hello!</FormHeader>
 				<FormSubHeader>Sign into your account here.</FormSubHeader>
-				<FormInput type='email' required='true' placeholder='Email' onChange={(e) => setLoginEmail(e.target.value)} />
+				<FormInput
+					type='email'
+					required='true'
+					placeholder='Email'
+					error={loginError}
+					onChange={(e) => setLoginEmail(e.target.value)}
+				/>
 				<FormInput
 					type='password'
 					required='true'
 					placeholder='Password'
+					error={loginError}
 					onChange={(e) => setLoginPassword(e.target.value)}
 				/>
 				<FormBtn type='submit'>Log In</FormBtn>

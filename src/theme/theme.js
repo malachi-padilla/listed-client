@@ -6,6 +6,7 @@ const theme = {
 		primary: '#06f',
 		medGrey: '#cdd0d4',
 		darkGrey: '#6c757d',
+		errorRed: '#ef233c',
 	},
 };
 
