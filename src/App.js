@@ -8,15 +8,10 @@ import Login from './pages/loginPage/Login';
 import Register from './pages/registerPage/Register';
 // eslint-disable-next-line
 import app from './config/firebaseConfig';
+import { getWidth } from './util/functions';
 
 const App = () => {
-	const getWidth = () => {
-		if (window.innerWidth >= 1366) {
-			return true;
-		} else {
-			return false;
-		}
-	};
+	const [filteredCategories, setFilteredCategories] = useState(null);
 	const [isDesktop, setIsDesktop] = useState(getWidth);
 	useEffect(() => {
 		const handleIsDesktop = () => {
@@ -29,7 +24,7 @@ const App = () => {
 		<AppContainer>
 			<NavBar isDesktop={isDesktop} />
 			<ContentContainer>
-				<Sidebar />
+				{isDesktop && <Sidebar filteredCategories={filteredCategories} />}
 				<PageContainer>
 					<Routes>
 						<Route path='/' element={<Home />} />

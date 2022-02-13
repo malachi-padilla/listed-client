@@ -20,6 +20,9 @@ export const NavContent = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	@media (max-width: 1024px) {
+		width: 90%;
+	}
 `;
 
 export const Logo = styled.h2`

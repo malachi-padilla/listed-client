@@ -11,6 +11,12 @@ export const MainContainer = styled.div`
 	position: absolute;
 	z-index: 5;
 	background-color: ${(props) => props.theme.colors.secondary};
+	@media (max-width: 1024px) {
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+	}
 `;
 
 export const MainFormContainer = styled.form`
