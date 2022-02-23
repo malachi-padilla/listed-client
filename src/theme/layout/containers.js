@@ -4,14 +4,14 @@ export const MainContainer = styled.div`
 	height: 100%;
 	width: 100vw;
 	top: 0;
-	left: -25vw;
+	left: -40rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: absolute;
 	z-index: 5;
 	background-color: ${(props) => props.theme.colors.secondary};
-	@media (max-width: 1024px) {
+	@media (max-width: 1100px) {
 		left: 0;
 		right: 0;
 		bottom: 0;
@@ -21,7 +21,7 @@ export const MainContainer = styled.div`
 
 export const MainFormContainer = styled.form`
 	height: 70%;
-	width: 40%;
+	width: 45%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -36,4 +36,26 @@ export const MainFormContainer = styled.form`
 		height: 100%;
 		background-color: ${(props) => props.theme.colors.secondary};
 	}
+`;
+
+export const ModalOverlay = styled.div`
+	position: absolute;
+	height: 100%;
+	width: 100vw;
+	z-index: 20;
+	backdrop-filter: blur(2px);
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+
+export const MainPageContainer = styled.div`
+	display: flex;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	background-color: ${(props) => props.theme.colors.secondary};
 `;

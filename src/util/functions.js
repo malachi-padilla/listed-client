@@ -5,7 +5,7 @@ export const onScroll = (scrollState) => {
 };
 
 export const getWidth = () => {
-	if (window.innerWidth >= 1024) {
+	if (window.innerWidth >= 1100) {
 		return true;
 	} else {
 		return false;

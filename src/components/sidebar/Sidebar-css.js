@@ -1,17 +1,14 @@
 import styled from 'styled-components';
-import { MainBtn } from '../../theme/btns';
 
 export const SideBarContainer = styled.div`
 	height: 100%;
-	width: 25%;
+	width: 40rem;
 	z-index: 2;
 	display: flex;
 	flex-direction: column;
 	box-shadow: 0.5rem 0.1rem 0.6rem -0.5rem rgba(0, 0, 0, 0.1), -0.5rem 0.1rem 0.6rem -0.5rem rgba(0, 0, 0, 0.1);
 	background-color: ${(props) => props.theme.colors.main};
-	@media (min-width: 1800px) {
-		width: 20%;
-	}
+	position: relative;
 `;
 
 export const SideBarSearchBarContainer = styled.div`
@@ -38,6 +35,7 @@ export const SearchBarContainerHeader = styled.div`
 export const SearchBarHeaderText = styled.h2`
 	font-size: 2.4rem;
 	font-weight: 600;
+	color: ${(props) => props.theme.colors.text};
 `;
 export const SearchBarHeaderBtn = styled.div`
 	display: flex;
@@ -47,13 +45,13 @@ export const SearchBarHeaderBtn = styled.div`
 	clip-path: circle(50% at 50% 50%);
 	height: 3.5rem;
 	width: 3.5rem;
-	background-color: ${(props) => props.theme.colors.secondary};
-	color: ${(props) => props.theme.colors.dark};
+	background-color: ${(props) => props.theme.colors.medGrey};
+	color: ${(props) => props.theme.colors.text};
 	font-size: 2rem;
 	cursor: pointer;
 	transition: all 200ms;
 	&:hover {
-		background-color: ${(props) => props.theme.colors.medGrey};
+		opacity: 0.8;
 	}
 `;
 
@@ -75,7 +73,7 @@ export const SearchBarInputWrapper = styled.div`
 	align-items: center;
 	border-radius: 3rem;
 	height: 3.5rem;
-	background-color: ${(props) => props.theme.colors.secondary};
+	background-color: ${(props) => props.theme.colors.input};
 `;
 export const SearchBarIconContainer = styled.div`
 	height: 100%;
@@ -97,6 +95,7 @@ export const SearchBarInput = styled.input`
 	height: 100%;
 	line-height: 1.6rem;
 	padding-right: 0.8rem;
+	color: ${(props) => props.theme.colors.text};
 `;
 export const SidebarOptionsContainer = styled.div`
 	width: 100%;
@@ -119,10 +118,10 @@ export const SidebarOptions = styled.div`
 	background-color: inherit;
 	gap: 0.7rem;
 	padding: 0.8rem;
-	border-bottom: 0.1rem solid ${(props) => props.theme.colors.medGrey};
+	border-bottom: 0.1rem solid ${(props) => props.theme.colors.transparent};
 `;
 
-export const SideBarBtn = styled.button`
+export const SideBarListingBtn = styled.button`
 	width: 100%;
 	height: 4rem;
 	border-radius: 0.7rem;

@@ -23,7 +23,6 @@ export default function Register() {
 				navigate('/');
 			})
 			.catch((error) => {
-				console.log(error.code);
 				if (error.code === 'auth/weak-password') {
 					toast.error('Password too weak, atleast 6 chars');
 					setRegisterError(true);

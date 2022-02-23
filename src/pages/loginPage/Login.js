@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import { signInWithEmailAndPassword, getAuth } from '@firebase/auth';
+import React from 'react';
 import { useNavigate } from 'react-router';
-import { toast } from 'react-toastify';
 import { LoginPageContainer } from './Login-css';
 import { MainFormContainer } from '../../theme/layout/containers';
 import { FormBtn, FormHeader, FormInput, FormLink, FormSubHeader } from '../registerPage/Register-css';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoginEmailAction, setErrorAction, setLoginPasswordAction } from '../../redux/actions';
+import { toast } from 'react-toastify';
+import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
 
 export default function Login() {
-	const [loginEmail, setLoginEmail] = useState('');
-	const [loginPassword, setLoginPassword] = useState('');
-	const [loginError, setLoginError] = useState(false);
+	const dispatch = useDispatch();
 	let navigate = useNavigate();
-
+	const { error, loginEmail, loginPassword } = useSelector((state) => state);
 	const login = (e) => {
 		e.preventDefault();
 		const authentication = getAuth();
@@ -23,13 +23,13 @@ export default function Login() {
 				navigate('/');
 			})
 			.catch((error) => {
-				console.error(error.code);
+				console.error(error.message);
 				if (error.code === 'auth/wrong-password') {
 					toast.error('Please check the Password');
-					setLoginError(true);
+					dispatch(setErrorAction(true));
 				} else if (error.code === 'auth/invalid-email') {
 					toast.error('Please check the Email');
-					setLoginError(true);
+					dispatch(setErrorAction(true));
 				}
 			});
 	};
@@ -43,15 +43,15 @@ export default function Login() {
 					type='email'
 					required='true'
 					placeholder='Email'
-					error={loginError}
-					onChange={(e) => setLoginEmail(e.target.value)}
+					error={error}
+					onChange={(e) => dispatch(setLoginEmailAction(e.target.value))}
 				/>
 				<FormInput
 					type='password'
 					required='true'
 					placeholder='Password'
-					error={loginError}
-					onChange={(e) => setLoginPassword(e.target.value)}
+					error={error}
+					onChange={(e) => dispatch(setLoginPasswordAction(e.target.value))}
 				/>
 				<FormBtn type='submit'>Log In</FormBtn>
 				<Link to='/register'>

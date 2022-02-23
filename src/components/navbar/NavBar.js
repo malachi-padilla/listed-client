@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { BtnPrimary, BtnSecondary, Logo, NavContainer, NavContent, NavForm, NavInput, NavBtns } from './NavBar-css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import { getAuth, signOut, signInWithEmailAndPassword } from '@firebase/auth';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoginEmailAction, setErrorAction, setLoginPasswordAction } from '../../redux/actions';
+import { CircleBtn } from '../../theme/btns';
+import { MyContext } from '../../GlobalContext';
 
 const NavBar = ({ isDesktop }) => {
-	const [loginEmail, setLoginEmail] = useState('');
-	const [loginPassword, setLoginPassword] = useState('');
+	const { user } = useContext(MyContext);
 	const auth = getAuth();
-
+	const dispatch = useDispatch();
 	let navigate = useNavigate();
-
+	const { error, loginEmail, loginPassword } = useSelector((state) => state);
 	const login = (e) => {
 		e.preventDefault();
 		const authentication = getAuth();
@@ -25,63 +27,81 @@ const NavBar = ({ isDesktop }) => {
 			.catch((error) => {
 				console.error(error.code);
 				if (error.code === 'auth/wrong-password') {
-					console.log('toast');
 					toast.error('Please check the Password');
+					dispatch(setErrorAction(true));
 				} else if (error.code === 'auth/invalid-email') {
 					toast.error('Please check the Email');
+					dispatch(setErrorAction(true));
 				}
 			});
+		console.log(error);
 	};
+
 	const handleLogout = () => {
 		signOut(auth)
 			.then(() => {
 				sessionStorage.removeItem('Auth Token');
+				navigate('/');
 				window.location.reload();
 
 				// successful
 			})
-			.catch((error) => {
+			.catch((err) => {
 				// An error happened.
+				console.log(err);
 			});
 	};
 
 	return (
 		<NavContainer>
+			<Logo onClick={() => navigate('/')}>Listed</Logo>
 			<NavContent>
-				<Logo onClick={() => navigate('/')}>Listed</Logo>
 				<ToastContainer />
 				{isDesktop ? (
-					<NavForm onSubmit={login}>
-						{sessionStorage.getItem('Auth Token') ? (
-							<BtnPrimary onClick={handleLogout}>Logout</BtnPrimary>
-						) : (
-							<>
-								<NavInput
-									required={true}
-									type='email'
-									placeholder='Email'
-									onChange={(e) => setLoginEmail(e.target.value)}
-								/>
-								<NavInput
-									required={true}
-									type='password'
-									placeholder='Password'
-									onChange={(e) => setLoginPassword(e.target.value)}
-								/>
-								<BtnPrimary type='submit'>Log in</BtnPrimary>
-								<Link to='register'>
-									<BtnSecondary>Sign up</BtnSecondary>
-								</Link>
-							</>
-						)}
-					</NavForm>
+					<>
+						<NavForm onSubmit={login}>
+							{sessionStorage.getItem('Auth Token') ? (
+								<>
+									<BtnPrimary onClick={handleLogout}>Logout</BtnPrimary>
+									<CircleBtn>
+										<i className='fas fa-caret-down'></i>
+									</CircleBtn>
+								</>
+							) : (
+								<>
+									<NavInput
+										error={error}
+										required='true'
+										type='email'
+										placeholder='Email'
+										onChange={(e) => dispatch(setLoginEmailAction(e.target.value))}
+									/>
+									<NavInput
+										error={error}
+										required={true}
+										type='password'
+										placeholder='Password'
+										onChange={(e) => dispatch(setLoginPasswordAction(e.target.value))}
+									/>
+									<BtnPrimary type='submit'>Log in</BtnPrimary>
+									<Link to='register'>
+										<BtnSecondary>Sign up</BtnSecondary>
+									</Link>
+								</>
+							)}
+						</NavForm>
+					</>
+				) : sessionStorage.getItem('Auth Token') && !isDesktop ? (
+					<>
+						<BtnPrimary onClick={handleLogout}>Logout</BtnPrimary>
+						<CircleBtn>
+							<i className='fas fa-caret-down'></i>
+						</CircleBtn>
+					</>
 				) : (
 					<NavBtns>
 						<Link to='login'>
 							<BtnPrimary>Log in</BtnPrimary>
-						</Link>
-						<Link to='register'>
-							<BtnSecondary>Sign up</BtnSecondary>
 						</Link>
 					</NavBtns>
 				)}

@@ -20,14 +20,11 @@ export const ContentContainer = styled.div`
 
 export const PageContainer = styled.div`
 	height: 100%;
-	width: 75%;
+	width: calc(100% - 40rem);
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	@media (max-width: 1024px) {
+	@media (max-width: 1100px) {
 		width: 100%;
-	}
-	@media (min-width: 1800px) {
-		width: 80%;
 	}
 `;

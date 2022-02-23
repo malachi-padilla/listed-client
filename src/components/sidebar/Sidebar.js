@@ -1,10 +1,10 @@
 import React from 'react';
-import { useContext, useEffect, useState, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../GlobalContext';
-import { OptionBar, OptionBarIcon, OptionBarSelected } from '../../theme/layout/customComponents';
-import { onScroll, handleModalOpenOnFocus } from '../../util/functions';
+import { onScroll } from '../../util/functions';
 import RegisterModal from '../modals/RegisterModal';
+import SettingsModal from '../modals/settingsModal/SettingsModal';
 import Options from './Options';
 import SearchModal from './searchModal/SearchModal';
 import {
@@ -15,42 +15,44 @@ import {
 	SearchBarIconContainer,
 	SearchBarInput,
 	SearchBarInputWrapper,
-	SideBarBtn,
+	SideBarListingBtn,
 	SideBarContainer,
 	SidebarOptions,
 	SidebarOptionsContainer,
 	SideBarSearchBarContainer,
 } from './Sidebar-css';
 
-const Sidebar = ({ filteredCategories }) => {
+const Sidebar = ({ filteredCategories, setIsDarkTheme, isDarkTheme }) => {
 	const { user } = useContext(MyContext);
 	const [scroll, setScroll] = useState(0);
-	const [browseAll, setBrowseAll] = useState(null);
 	const [searchModalOpen, setSearchModalOpen] = useState(false);
 	const [registerModalOpen, setRegisterModalOpen] = useState(false);
-	const [listingModal, setListingModal] = useState(false);
-	useEffect(() => {
-		if (filteredCategories === null) {
-			setBrowseAll(true);
-		}
-	}, []);
+	const [settingsModalOpen, setSettingsModalOpen] = useState(false);
+	const navigate = useNavigate();
 
 	const handleBtnClick = () => {
 		if (!user) {
 			setRegisterModalOpen(true);
 		} else {
-			setListingModal(true);
+			navigate('/create');
 		}
 	};
 
 	return (
 		<SideBarContainer>
-			{registerModalOpen && <RegisterModal />}
+			{settingsModalOpen && (
+				<SettingsModal
+					setIsDarkTheme={setIsDarkTheme}
+					isDarkTheme={isDarkTheme}
+					setSettingsModalOpen={setSettingsModalOpen}
+				/>
+			)}
+			{registerModalOpen && <RegisterModal setRegisterModalOpen={setRegisterModalOpen} />}
 			<SideBarSearchBarContainer>
 				<SearchBarContainerHeader>
 					<SearchBarHeaderText>Shop</SearchBarHeaderText>
-					<SearchBarHeaderBtn>
-						<i className='fa-solid fa-gear'></i>
+					<SearchBarHeaderBtn onClick={() => setSettingsModalOpen(true)}>
+						<i className='fas fa-adjust'></i>
 					</SearchBarHeaderBtn>
 				</SearchBarContainerHeader>
 				<SearchBar scroll={scroll}>
@@ -69,26 +71,11 @@ const Sidebar = ({ filteredCategories }) => {
 			</SideBarSearchBarContainer>
 			<SidebarOptionsContainer id='sideBarOptions' onScroll={() => onScroll(setScroll)}>
 				<SidebarOptions>
-					{browseAll ? (
-						<OptionBarSelected>
-							<OptionBarIcon>
-								<i className='fas fa-store'></i>
-							</OptionBarIcon>
-							Browse all
-						</OptionBarSelected>
-					) : (
-						<OptionBar>
-							<OptionBarIcon>
-								<i className='fas fa-store'></i>
-							</OptionBarIcon>
-							Browse all
-						</OptionBar>
-					)}
-					<Options handleBtnClick={handleBtnClick} />
-					<SideBarBtn onClick={() => handleBtnClick()}>
+					<Options setRegisterModalOpen={setRegisterModalOpen} />
+					<SideBarListingBtn onClick={() => handleBtnClick()}>
 						<i className='fas fa-plus'></i>
 						Create new listing
-					</SideBarBtn>
+					</SideBarListingBtn>
 				</SidebarOptions>
 			</SidebarOptionsContainer>
 		</SideBarContainer>

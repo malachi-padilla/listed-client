@@ -8,6 +8,7 @@ export const MyContext = createContext({
 
 const GlobalContext = ({ children }) => {
 	const [user, setUser] = useState(null);
+
 	// run this block to get a user ----
 	const auth = getAuth();
 	onAuthStateChanged(auth, (user) => {
