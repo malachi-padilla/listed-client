@@ -38,9 +38,13 @@ export const HeroContents = styled.div`
 	gap: 2rem;
 `;
 
-export const HeroHeader = styled(MainHeader)``;
+export const HeroHeader = styled(MainHeader)`
+	color: ${(props) => props.theme.colors.light};
+`;
 
-export const HeroParagraph = styled(MainParagraph)``;
+export const HeroParagraph = styled(MainParagraph)`
+	color: ${(props) => props.theme.colors.light};
+`;
 
 export const HeroList = styled.ul`
 	text-decoration: none;

@@ -63,7 +63,7 @@ const NavBar = ({ isDesktop }) => {
 							{sessionStorage.getItem('Auth Token') ? (
 								<>
 									<BtnPrimary onClick={handleLogout}>Logout</BtnPrimary>
-									<CircleBtn>
+									<CircleBtn type='button'>
 										<i className='fas fa-caret-down'></i>
 									</CircleBtn>
 								</>
@@ -94,7 +94,7 @@ const NavBar = ({ isDesktop }) => {
 				) : sessionStorage.getItem('Auth Token') && !isDesktop ? (
 					<>
 						<BtnPrimary onClick={handleLogout}>Logout</BtnPrimary>
-						<CircleBtn>
+						<CircleBtn type='button'>
 							<i className='fas fa-caret-down'></i>
 						</CircleBtn>
 					</>

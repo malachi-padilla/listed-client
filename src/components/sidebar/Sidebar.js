@@ -5,6 +5,8 @@ import { MyContext } from '../../GlobalContext';
 import { onScroll } from '../../util/functions';
 import RegisterModal from '../modals/RegisterModal';
 import SettingsModal from '../modals/settingsModal/SettingsModal';
+import Categories from './categories/Categories';
+import Filters from './filters/Filters';
 import Options from './Options';
 import SearchModal from './searchModal/SearchModal';
 import {
@@ -77,6 +79,8 @@ const Sidebar = ({ filteredCategories, setIsDarkTheme, isDarkTheme }) => {
 						Create new listing
 					</SideBarListingBtn>
 				</SidebarOptions>
+				<Filters />
+				<Categories />
 			</SidebarOptionsContainer>
 		</SideBarContainer>
 	);

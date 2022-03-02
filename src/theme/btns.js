@@ -28,6 +28,4 @@ export const CircleBtn = styled(MainBtn)`
 		background-color: #0066ff1d;
 		color: ${(props) => props.theme.colors.primary};
 	}
-	:hover {
-	}
 `;
