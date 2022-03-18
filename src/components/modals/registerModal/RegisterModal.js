@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { FormBtn, FormHeader, FormInput, FormLink, FormSubHeader } from '../../pages/registerPage/Register-css';
+import { FormBtn, FormHeader, FormInput, FormLink, FormSubHeader } from '../../../pages/registerPage/Register-css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setErrorAction, setLoginEmailAction, setLoginPasswordAction } from '../../redux/actions';
+import { setErrorAction, setLoginEmailAction, setLoginPasswordAction } from '../../../redux/actions';
 import {
 	HeroContents,
 	HeroHeader,
@@ -15,7 +15,7 @@ import {
 import { Link } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
 import { toast } from 'react-toastify';
-import { ModalOverlay } from '../../theme/layout/containers';
+import { ModalOverlay } from '../../../theme/layout/containers';
 
 const RegisterModal = ({ setRegisterModalOpen }) => {
 	const dispatch = useDispatch();

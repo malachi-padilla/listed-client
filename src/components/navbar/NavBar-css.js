@@ -12,6 +12,7 @@ export const NavContainer = styled.div`
 	box-shadow: 0.1rem 0.1rem 0.6rem rgba(0, 0, 0, 0.1);
 	background-color: ${(props) => props.theme.colors.main};
 	border-bottom: 1px solid ${(props) => props.theme.colors.transparent};
+	position: relative;
 `;
 
 export const NavContent = styled.div`

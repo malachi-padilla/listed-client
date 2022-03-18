@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Img from '../../assets/listedHeroPic.jpg';
-import { MainHeader, MainParagraph } from '../../theme/typography';
+import Img from '../../../assets/listedHeroPic.jpg';
+import { MainHeader, MainParagraph } from '../../../theme/typography';
 export const RegisterModalContainer = styled.div`
 	display: flex;
 	justify-content: center;

@@ -37,23 +37,6 @@ export const SearchBarHeaderText = styled.h2`
 	font-weight: 600;
 	color: ${(props) => props.theme.colors.text};
 `;
-export const SearchBarHeaderBtn = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: none;
-	clip-path: circle(50% at 50% 50%);
-	height: 3.5rem;
-	width: 3.5rem;
-	background-color: ${(props) => props.theme.colors.medGrey};
-	color: ${(props) => props.theme.colors.text};
-	font-size: 2rem;
-	cursor: pointer;
-	transition: all 200ms;
-	&:hover {
-		opacity: 0.8;
-	}
-`;
 
 export const SearchBar = styled.div`
 	width: 90%;

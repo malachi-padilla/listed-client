@@ -1,20 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { BtnPrimary, BtnSecondary, Logo, NavContainer, NavContent, NavForm, NavInput, NavBtns } from './NavBar-css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
-import { getAuth, signOut, signInWithEmailAndPassword } from '@firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoginEmailAction, setErrorAction, setLoginPasswordAction } from '../../redux/actions';
 import { CircleBtn } from '../../theme/btns';
-import { MyContext } from '../../GlobalContext';
+import LogoutModal from '../modals/logoutModal/LogoutModal';
 
-const NavBar = ({ isDesktop }) => {
-	const { user } = useContext(MyContext);
-	const auth = getAuth();
+const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 	const dispatch = useDispatch();
 	let navigate = useNavigate();
 	const { error, loginEmail, loginPassword } = useSelector((state) => state);
+	const [modalOpen, setModalOpen] = useState(false);
 	const login = (e) => {
 		e.preventDefault();
 		const authentication = getAuth();
@@ -37,21 +36,6 @@ const NavBar = ({ isDesktop }) => {
 		console.log(error);
 	};
 
-	const handleLogout = () => {
-		signOut(auth)
-			.then(() => {
-				sessionStorage.removeItem('Auth Token');
-				navigate('/');
-				window.location.reload();
-
-				// successful
-			})
-			.catch((err) => {
-				// An error happened.
-				console.log(err);
-			});
-	};
-
 	return (
 		<NavContainer>
 			<Logo onClick={() => navigate('/')}>Listed</Logo>
@@ -62,8 +46,7 @@ const NavBar = ({ isDesktop }) => {
 						<NavForm onSubmit={login}>
 							{sessionStorage.getItem('Auth Token') ? (
 								<>
-									<BtnPrimary onClick={handleLogout}>Logout</BtnPrimary>
-									<CircleBtn type='button'>
+									<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
 										<i className='fas fa-caret-down'></i>
 									</CircleBtn>
 								</>
@@ -93,8 +76,7 @@ const NavBar = ({ isDesktop }) => {
 					</>
 				) : sessionStorage.getItem('Auth Token') && !isDesktop ? (
 					<>
-						<BtnPrimary onClick={handleLogout}>Logout</BtnPrimary>
-						<CircleBtn type='button'>
+						<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
 							<i className='fas fa-caret-down'></i>
 						</CircleBtn>
 					</>
@@ -106,6 +88,7 @@ const NavBar = ({ isDesktop }) => {
 					</NavBtns>
 				)}
 			</NavContent>
+			{modalOpen && <LogoutModal setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />}
 		</NavContainer>
 	);
 };

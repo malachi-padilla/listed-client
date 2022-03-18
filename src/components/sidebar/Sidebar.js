@@ -3,16 +3,16 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MyContext } from '../../GlobalContext';
 import { onScroll } from '../../util/functions';
-import RegisterModal from '../modals/RegisterModal';
-import SettingsModal from '../modals/settingsModal/SettingsModal';
+import MapModal from '../modals/mapModal/MapModal';
+import RegisterModal from '../modals/registerModal/RegisterModal';
 import Categories from './categories/Categories';
 import Filters from './filters/Filters';
 import Options from './Options';
 import SearchModal from './searchModal/SearchModal';
+
 import {
 	SearchBar,
 	SearchBarContainerHeader,
-	SearchBarHeaderBtn,
 	SearchBarHeaderText,
 	SearchBarIconContainer,
 	SearchBarInput,
@@ -24,12 +24,12 @@ import {
 	SideBarSearchBarContainer,
 } from './Sidebar-css';
 
-const Sidebar = ({ filteredCategories, setIsDarkTheme, isDarkTheme }) => {
+const Sidebar = () => {
 	const { user } = useContext(MyContext);
 	const [scroll, setScroll] = useState(0);
 	const [searchModalOpen, setSearchModalOpen] = useState(false);
 	const [registerModalOpen, setRegisterModalOpen] = useState(false);
-	const [settingsModalOpen, setSettingsModalOpen] = useState(false);
+	const [mapModalOpen, setMapModalOpen] = useState(false);
 	const navigate = useNavigate();
 
 	const handleBtnClick = () => {
@@ -42,20 +42,11 @@ const Sidebar = ({ filteredCategories, setIsDarkTheme, isDarkTheme }) => {
 
 	return (
 		<SideBarContainer>
-			{settingsModalOpen && (
-				<SettingsModal
-					setIsDarkTheme={setIsDarkTheme}
-					isDarkTheme={isDarkTheme}
-					setSettingsModalOpen={setSettingsModalOpen}
-				/>
-			)}
+			{mapModalOpen && <MapModal setMapModalOpen={setMapModalOpen} />}
 			{registerModalOpen && <RegisterModal setRegisterModalOpen={setRegisterModalOpen} />}
 			<SideBarSearchBarContainer>
 				<SearchBarContainerHeader>
 					<SearchBarHeaderText>Shop</SearchBarHeaderText>
-					<SearchBarHeaderBtn onClick={() => setSettingsModalOpen(true)}>
-						<i className='fas fa-adjust'></i>
-					</SearchBarHeaderBtn>
 				</SearchBarContainerHeader>
 				<SearchBar scroll={scroll}>
 					<SearchBarInputWrapper>
@@ -79,7 +70,7 @@ const Sidebar = ({ filteredCategories, setIsDarkTheme, isDarkTheme }) => {
 						Create new listing
 					</SideBarListingBtn>
 				</SidebarOptions>
-				<Filters />
+				<Filters setMapModalOpen={setMapModalOpen} />
 				<Categories />
 			</SidebarOptionsContainer>
 		</SideBarContainer>

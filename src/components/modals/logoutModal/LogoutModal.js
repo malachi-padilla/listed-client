@@ -1,0 +1,112 @@
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { MyContext } from '../../../GlobalContext';
+import {
+	LogoutModalContainer,
+	ProfileBar,
+	ProfileImg,
+	ProfileName,
+	SettingBar,
+	SettingsContainer,
+	SettingBarIcon,
+	SettingBarBtn,
+	SettingModalHeading,
+	SettingModalHeader,
+	BackBtn,
+	SettingBox,
+	SettingBoxHeader,
+	SettingIcon,
+	SettingTextBox,
+	SettingTitle,
+	SettingDescription,
+} from './LogoutModal-css';
+import { getAuth, signOut } from '@firebase/auth';
+import { RadioBtn, RadioLabel } from '../../../theme/layout/customComponents';
+import { ModalOverlay } from '../../../theme/layout/containers';
+
+const LogoutModal = ({ isDarkTheme, setIsDarkTheme }) => {
+	const [settingModalOpen, setSettingModalOpen] = useState(false);
+	const { user } = useContext(MyContext);
+	const auth = getAuth();
+	let navigate = useNavigate();
+	const handleLogout = () => {
+		signOut(auth)
+			.then(() => {
+				sessionStorage.removeItem('Auth Token');
+				navigate('/');
+				window.location.reload();
+
+				// successful
+			})
+			.catch((err) => {
+				// An error happened.
+				console.log(err);
+			});
+	};
+
+	return (
+		<ModalOverlay>
+			<LogoutModalContainer>
+				{settingModalOpen ? (
+					<>
+						<SettingModalHeader>
+							<BackBtn onClick={() => setSettingModalOpen(false)} className='fas fa-arrow-left'></BackBtn>
+							<SettingModalHeading>Display & Accessibility</SettingModalHeading>
+						</SettingModalHeader>
+						<SettingBox>
+							<SettingBoxHeader>
+								<SettingIcon>
+									<i className='fas fa-moon'></i>
+								</SettingIcon>
+								<SettingTextBox>
+									<SettingTitle>Dark Mode</SettingTitle>
+									<SettingDescription>
+										Adjust the appearance of Listed to reduce glare and give your eyes a break.
+									</SettingDescription>
+								</SettingTextBox>
+							</SettingBoxHeader>
+							<RadioLabel>
+								Off
+								<RadioBtn type='radio' name='radio' onClick={() => setIsDarkTheme(false)} checked={!isDarkTheme} />
+							</RadioLabel>
+							<RadioLabel>
+								On
+								<RadioBtn type='radio' name='radio' onClick={() => setIsDarkTheme(true)} checked={isDarkTheme} />
+							</RadioLabel>
+						</SettingBox>
+					</>
+				) : (
+					<>
+						<ProfileBar>
+							<ProfileImg>
+								<i className='fas fa-user'></i>
+							</ProfileImg>
+							<ProfileName>
+								{!user ? null : user && user.email}
+								<br />
+								<span>See your profile</span>
+							</ProfileName>
+						</ProfileBar>
+						<SettingsContainer>
+							<SettingBar onClick={() => setSettingModalOpen(true)}>
+								<SettingBarIcon>
+									<i className='fas fa-moon'></i>
+								</SettingBarIcon>
+								Display & Accessibility
+								<SettingBarBtn className='fas fa-chevron-right' />
+							</SettingBar>
+							<SettingBar onClick={handleLogout}>
+								<SettingBarIcon>
+									<i className='fas fa-sign-out-alt'></i>
+								</SettingBarIcon>
+								Log Out
+							</SettingBar>
+						</SettingsContainer>
+					</>
+				)}
+			</LogoutModalContainer>
+		</ModalOverlay>
+	);
+};
+
+export default LogoutModal;

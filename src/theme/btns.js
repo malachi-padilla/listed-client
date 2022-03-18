@@ -17,14 +17,13 @@ export const MainBtn = styled.button`
 
 export const CircleBtn = styled(MainBtn)`
 	clip-path: circle(50% at 50% 50%);
-	background-color: ${(props) => props.theme.colors.transparent};
-	color: ${(props) => props.theme.colors.text};
+	background-color: ${(props) => (props.isActive ? '#0066ff1d' : props.theme.colors.transparent)};
+	color: ${(props) => (props.isActive ? props.theme.colors.primary : props.theme.colors.text)};
 	height: 2rem;
 	width: 2rem;
 	padding: 1rem;
 	transition: all 0.2s;
-	:focus,
-	:active {
+	:hover {
 		background-color: #0066ff1d;
 		color: ${(props) => props.theme.colors.primary};
 	}

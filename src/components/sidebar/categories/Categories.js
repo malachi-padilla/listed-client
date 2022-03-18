@@ -10,16 +10,16 @@ const Categories = () => {
 		{ name: 'entertainment', icon: 'fas fa-gamepad' },
 		{ name: 'furniture', icon: 'fas fa-couch' },
 		{ name: 'free stuff', icon: 'fas fa-hand-holding-heart' },
-		{ name: 'home goods', icon: 'fas fa-house' },
+		{ name: 'home goods', icon: 'fas fa-house-chimney' },
 		{ name: 'musical instruments', icon: 'fas fa-guitar' },
 		{ name: 'pets', icon: 'fas fa-paw' },
-		{ name: 'sports goods', icon: 'fas fa-skiing-nordic' },
+		{ name: 'sporting goods', icon: 'fas fa-running' },
 	];
 	return (
 		<CategoriesContainer>
 			<CategoryHeader>Categories</CategoryHeader>
-			{categories.map((item) => (
-				<Category>
+			{categories.map((item, index) => (
+				<Category key={index}>
 					<CategoryIcon>
 						<i className={item.icon}></i>
 					</CategoryIcon>

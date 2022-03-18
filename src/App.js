@@ -18,7 +18,7 @@ import { DarkTheme, LightTheme } from './theme/theme';
 import { GlobalStyles } from './GlobalStyles';
 
 const App = () => {
-	const [filteredCategories, setFilteredCategories] = useState(null);
+	// eslint-disable-next-line
 	const [isDesktop, setIsDesktop] = useState(getWidth);
 	const [isDarkTheme, setIsDarkTheme] = useState(false);
 
@@ -39,15 +39,9 @@ const App = () => {
 		<ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
 			<GlobalStyles />
 			<AppContainer>
-				<NavBar isDesktop={isDesktop} setIsDarkTheme={setIsDarkTheme} />
+				<NavBar isDesktop={isDesktop} setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
 				<ContentContainer>
-					{isDesktop && (
-						<Sidebar
-							filteredCategories={filteredCategories}
-							isDarkTheme={isDarkTheme}
-							setIsDarkTheme={setIsDarkTheme}
-						/>
-					)}
+					{isDesktop && <Sidebar />}
 					<PageContainer>
 						<Routes>
 							<Route path='/' element={<Home />} />

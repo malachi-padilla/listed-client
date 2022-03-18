@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { OptionBar, OptionBarIcon } from '../../../theme/layout/customComponents';
-import { SidebarFilterHeader } from '../filters/Filters-css';
 import { SidebarOptions } from '../Sidebar-css';
 
-export const CategoriesContainer = styled(SidebarOptions)``;
+export const CategoriesContainer = styled(SidebarOptions)`
+	border-bottom: none;
+`;
 
 export const Category = styled(OptionBar)`
 	text-transform: capitalize;
