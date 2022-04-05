@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ModalOverlay } from '../../../theme/layout/containers';
 import { OptionBar, OptionBarIcon } from '../../../theme/layout/customComponents';
 import { MainHeader, MainParagraph } from '../../../theme/typography';
 
@@ -152,4 +153,9 @@ export const SettingTitle = styled(MainHeader)`
 export const SettingDescription = styled(MainParagraph)`
 	font-size: 1.4rem;
 	opacity: 60%;
+`;
+
+export const LogoutModalOverlay = styled(ModalOverlay)`
+	height: 100vh;
+	backdrop-filter: none;
 `;

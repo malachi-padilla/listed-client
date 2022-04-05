@@ -19,12 +19,13 @@ import {
 	SettingTextBox,
 	SettingTitle,
 	SettingDescription,
+	LogoutModalOverlay,
 } from './LogoutModal-css';
 import { getAuth, signOut } from '@firebase/auth';
 import { RadioBtn, RadioLabel } from '../../../theme/layout/customComponents';
 import { ModalOverlay } from '../../../theme/layout/containers';
 
-const LogoutModal = ({ isDarkTheme, setIsDarkTheme }) => {
+const LogoutModal = ({ isDarkTheme, setIsDarkTheme, setModalOpen }) => {
 	const [settingModalOpen, setSettingModalOpen] = useState(false);
 	const { user } = useContext(MyContext);
 	const auth = getAuth();
@@ -45,8 +46,8 @@ const LogoutModal = ({ isDarkTheme, setIsDarkTheme }) => {
 	};
 
 	return (
-		<ModalOverlay>
-			<LogoutModalContainer>
+		<LogoutModalOverlay onClick={() => setModalOpen(false)}>
+			<LogoutModalContainer onClick={(e) => e.stopPropagation()}>
 				{settingModalOpen ? (
 					<>
 						<SettingModalHeader>
@@ -105,7 +106,7 @@ const LogoutModal = ({ isDarkTheme, setIsDarkTheme }) => {
 					</>
 				)}
 			</LogoutModalContainer>
-		</ModalOverlay>
+		</LogoutModalOverlay>
 	);
 };
 

@@ -88,7 +88,9 @@ const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 					</NavBtns>
 				)}
 			</NavContent>
-			{modalOpen && <LogoutModal setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />}
+			{modalOpen && (
+				<LogoutModal setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} setModalOpen={setModalOpen} />
+			)}
 		</NavContainer>
 	);
 };

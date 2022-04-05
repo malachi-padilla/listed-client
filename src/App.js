@@ -23,17 +23,11 @@ const App = () => {
 	const [isDarkTheme, setIsDarkTheme] = useState(false);
 
 	useEffect(() => {
-		setIsDarkTheme(JSON.parse(window.localStorage.getItem('darkTheme')));
-	}, []);
-	useEffect(() => {
 		const handleIsDesktop = () => {
 			setIsDesktop(getWidth);
 		};
 		window.addEventListener('resize', handleIsDesktop);
 	}, []);
-	useEffect(() => {
-		window.localStorage.setItem('darkTheme', isDarkTheme);
-	}, [isDarkTheme]);
 
 	return (
 		<ThemeProvider theme={isDarkTheme ? DarkTheme : LightTheme}>
