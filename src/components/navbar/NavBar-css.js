@@ -7,10 +7,12 @@ export const NavContainer = styled.div`
 	height: 7vh;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 	z-index: 10;
-	box-shadow: 0.1rem 0.1rem 0.6rem rgba(0, 0, 0, 0.2);
+	box-shadow: 0.1rem 0.1rem 0.6rem rgba(0, 0, 0, 0.1);
 	background-color: ${(props) => props.theme.colors.main};
+	border-bottom: 1px solid ${(props) => props.theme.colors.transparent};
+	position: relative;
 `;
 
 export const NavContent = styled.div`
@@ -18,16 +20,23 @@ export const NavContent = styled.div`
 	width: 90%;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: center;
+	gap: 1rem;
+	padding-right: 1rem;
+	@media (max-width: 1024px) {
+		width: 90%;
+	}
 `;
 
-export const Logo = styled.h2`
+export const Logo = styled.div`
+	width: 10%;
 	color: ${(props) => props.theme.colors.primary};
 	font-size: 3.5rem;
 	text-transform: lowercase;
 	font-family: 'Fugaz One', cursive;
 	cursor: pointer;
+	padding-left: 1rem;
 `;
 
 export const NavForm = styled.form`
@@ -40,7 +49,7 @@ export const NavForm = styled.form`
 
 export const BtnPrimary = styled(MainBtn)`
 	background-color: ${(props) => props.theme.colors.primary};
-	color: ${(props) => props.theme.colors.main};
+	color: ${(props) => props.theme.colors.light};
 `;
 export const BtnSecondary = styled(MainBtn)`
 	background-color: ${(props) => props.theme.colors.main};

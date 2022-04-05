@@ -12,19 +12,20 @@ export const FormInput = styled(MainInput)`
 	::placeholder {
 		font-size: 1.6rem;
 	}
+	border: ${(props) => (props.error ? ` 1px solid ${props.theme.colors.errorRed} ` : null)};
 `;
 
 export const FormBtn = styled(MainBtn)`
 	width: 80%;
 	background-color: ${(props) => props.theme.colors.primary};
-	color: ${(props) => props.theme.colors.main};
+	color: ${(props) => props.theme.colors.light};
 	padding: 2rem;
 	font-size: 2rem;
 	text-transform: none;
 `;
 
 export const FormHeader = styled.h2`
-	color: ${(props) => props.theme.colors.dark};
+	color: ${(props) => props.theme.colors.text};
 	font-size: 3rem;
 	text-transform: capitalize;
 `;

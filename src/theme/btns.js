@@ -9,7 +9,22 @@ export const MainBtn = styled.button`
 	cursor: pointer;
 	font-size: 1.6rem;
 	text-transform: capitalize;
+	color: ${(props) => props.theme.colors.light};
 	:hover {
 		opacity: 0.8;
+	}
+`;
+
+export const CircleBtn = styled(MainBtn)`
+	clip-path: circle(50% at 50% 50%);
+	background-color: ${(props) => (props.isActive ? '#0066ff1d' : props.theme.colors.transparent)};
+	color: ${(props) => (props.isActive ? props.theme.colors.primary : props.theme.colors.text)};
+	height: 2rem;
+	width: 2rem;
+	padding: 1rem;
+	transition: all 0.2s;
+	:hover {
+		background-color: #0066ff1d;
+		color: ${(props) => props.theme.colors.primary};
 	}
 `;
