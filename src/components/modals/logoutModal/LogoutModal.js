@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { MyContext } from '../../../GlobalContext';
 import {
 	LogoutModalContainer,
 	ProfileBar,
@@ -23,20 +22,22 @@ import {
 } from './LogoutModal-css';
 import { getAuth, signOut } from '@firebase/auth';
 import { RadioBtn, RadioLabel } from '../../../theme/layout/customComponents';
-import { ModalOverlay } from '../../../theme/layout/containers';
+import { useDispatch, useSelector } from 'react-redux';
+import { setMongoUser } from '../../../redux/actions';
 
 const LogoutModal = ({ isDarkTheme, setIsDarkTheme, setModalOpen }) => {
 	const [settingModalOpen, setSettingModalOpen] = useState(false);
-	const { user } = useContext(MyContext);
+	const { mongoUser } = useSelector((state) => state);
+	const dispatch = useDispatch();
 	const auth = getAuth();
 	let navigate = useNavigate();
 	const handleLogout = () => {
 		signOut(auth)
 			.then(() => {
 				sessionStorage.removeItem('Auth Token');
+				dispatch(setMongoUser(null));
 				navigate('/');
 				window.location.reload();
-
 				// successful
 			})
 			.catch((err) => {
@@ -44,6 +45,7 @@ const LogoutModal = ({ isDarkTheme, setIsDarkTheme, setModalOpen }) => {
 				console.log(err);
 			});
 	};
+	console.log(mongoUser);
 
 	return (
 		<LogoutModalOverlay onClick={() => setModalOpen(false)}>
@@ -83,7 +85,7 @@ const LogoutModal = ({ isDarkTheme, setIsDarkTheme, setModalOpen }) => {
 								<i className='fas fa-user'></i>
 							</ProfileImg>
 							<ProfileName>
-								{!user ? null : user && user.email}
+								{!mongoUser ? null : mongoUser && mongoUser.username}
 								<br />
 								<span>See your profile</span>
 							</ProfileName>

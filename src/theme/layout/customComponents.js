@@ -87,15 +87,15 @@ export const RadioBtn = styled.input`
 	margin: 0;
 	font: inherit;
 	color: ${(props) => props.theme.colors.text};
-	width: 1.15em;
-	height: 1.15em;
-	border: 0.15em solid ${(props) => props.theme.colors.primary};
+	width: 1.55rem;
+	height: 1.55rem;
+	border: 0.15rem solid ${(props) => props.theme.colors.primary};
 	border-radius: 50%;
 	cursor: pointer;
 	::before {
 		content: '';
-		width: 0.65em;
-		height: 0.65em;
+		width: 0.95rem;
+		height: 0.95rem;
 		border-radius: 50%;
 		transform: scale(0);
 		transition: 200ms transform ease-in-out;

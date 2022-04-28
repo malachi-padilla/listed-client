@@ -41,14 +41,14 @@ export default function Login() {
 				<FormSubHeader>Sign into your account here.</FormSubHeader>
 				<FormInput
 					type='email'
-					required='true'
+					required={true}
 					placeholder='Email'
 					error={error}
 					onChange={(e) => dispatch(setLoginEmailAction(e.target.value))}
 				/>
 				<FormInput
 					type='password'
-					required='true'
+					required={true}
 					placeholder='Password'
 					error={error}
 					onChange={(e) => dispatch(setLoginPasswordAction(e.target.value))}

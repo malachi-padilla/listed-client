@@ -103,6 +103,7 @@ export const SettingModalHeading = styled(MainHeader)`
 export const BackBtn = styled.i`
 	font-size: 1.8rem;
 	color: ${(props) => props.theme.colors.text};
+	cursor: pointer;
 `;
 
 export const SettingBox = styled.div`

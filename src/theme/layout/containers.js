@@ -11,7 +11,7 @@ export const MainContainer = styled.div`
 	position: absolute;
 	z-index: 5;
 	background-color: ${(props) => props.theme.colors.secondary};
-	@media (max-width: 1100px) {
+	@media (max-width: 1023px) {
 		left: 0;
 		right: 0;
 		bottom: 0;
@@ -21,7 +21,7 @@ export const MainContainer = styled.div`
 
 export const MainFormContainer = styled.form`
 	height: 70%;
-	width: 45%;
+	width: 60rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -31,10 +31,10 @@ export const MainFormContainer = styled.form`
 	padding: 1rem;
 	background-color: ${(props) => props.theme.colors.main};
 	gap: 1.6rem;
-	@media (max-width: 1024px) {
+	@media (max-width: 1023px) {
 		width: 100%;
 		height: 100%;
-		background-color: ${(props) => props.theme.colors.secondary};
+		background-color: ${(props) => props.theme.colors.main};
 	}
 `;
 

@@ -24,7 +24,7 @@ export const NavContent = styled.div`
 	align-items: center;
 	gap: 1rem;
 	padding-right: 1rem;
-	@media (max-width: 1024px) {
+	@media (max-width: 1023px) {
 		width: 90%;
 	}
 `;

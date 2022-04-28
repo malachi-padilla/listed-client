@@ -18,8 +18,7 @@ const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 		e.preventDefault();
 		const authentication = getAuth();
 		signInWithEmailAndPassword(authentication, loginEmail, loginPassword)
-			.then((response) => {
-				// purely to save time when trying to see if a user is logged in or not, instead of calling API.
+			.then(async (response) => {
 				sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
 				navigate('/');
 			})
@@ -33,7 +32,6 @@ const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 					dispatch(setErrorAction(true));
 				}
 			});
-		console.log(error);
 	};
 
 	return (
@@ -54,7 +52,7 @@ const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 								<>
 									<NavInput
 										error={error}
-										required='true'
+										required={true}
 										type='email'
 										placeholder='Email'
 										onChange={(e) => dispatch(setLoginEmailAction(e.target.value))}

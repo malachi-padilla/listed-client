@@ -24,7 +24,7 @@ export const PageContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	position: relative;
-	@media (max-width: 1024px) {
+	@media (max-width: 1023px) {
 		width: 100%;
 	}
 `;
