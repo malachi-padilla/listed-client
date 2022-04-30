@@ -1,8 +1,8 @@
 import React from 'react';
+import { ExitBtn } from '../../../theme/btns';
 import { ModalOverlay } from '../../../theme/layout/containers';
 import {
 	ApplyBtn,
-	ExitBtn,
 	MapModalBody,
 	MapModalContainer,
 	MapModalFooter,

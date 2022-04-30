@@ -45,7 +45,6 @@ const LogoutModal = ({ isDarkTheme, setIsDarkTheme, setModalOpen }) => {
 				console.log(err);
 			});
 	};
-	console.log(mongoUser);
 
 	return (
 		<LogoutModalOverlay onClick={() => setModalOpen(false)}>

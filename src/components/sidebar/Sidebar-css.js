@@ -9,6 +9,11 @@ export const SideBarContainer = styled.div`
 	box-shadow: 0.5rem 0.1rem 0.6rem -0.5rem rgba(0, 0, 0, 0.1), -0.5rem 0.1rem 0.6rem -0.5rem rgba(0, 0, 0, 0.1);
 	background-color: ${(props) => props.theme.colors.main};
 	position: relative;
+	@media screen and (max-width: 1023px) {
+		height: 15%;
+		width: 100%;
+		border-bottom: 0.1rem solid ${(props) => props.theme.colors.transparent};
+	}
 `;
 
 export const SideBarSearchBarContainer = styled.div`
@@ -21,6 +26,9 @@ export const SideBarSearchBarContainer = styled.div`
 	background-color: inherit;
 	z-index: 2;
 	position: relative;
+	@media screen and (max-width: 1023px) {
+		height: 100%;
+	}
 `;
 
 export const SearchBarContainerHeader = styled.div`
@@ -54,7 +62,7 @@ export const SearchBarInputWrapper = styled.div`
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	border-radius: 3rem;
+	border-radius: 1rem;
 	height: 3.5rem;
 	background-color: ${(props) => props.theme.colors.input};
 `;
@@ -65,7 +73,7 @@ export const SearchBarIconContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 3rem 0 0 3rem;
+	border-radius: 1rem 0 0 1rem;
 	color: ${(props) => props.theme.colors.darkGrey};
 	font-size: 1.6rem;
 `;
@@ -74,7 +82,7 @@ export const SearchBarInput = styled.input`
 	background-color: inherit;
 	outline: none;
 	border: none;
-	border-radius: 0 3rem 3rem 0;
+	border-radius: 0 1rem 1rem 0;
 	height: 100%;
 	line-height: 1.6rem;
 	padding-right: 0.8rem;
@@ -102,6 +110,17 @@ export const SidebarOptions = styled.div`
 	gap: 0.7rem;
 	padding: 0.8rem;
 	border-bottom: 0.1rem solid ${(props) => props.theme.colors.transparent};
+`;
+
+export const MobileOptionsBar = styled.div`
+	display: flex;
+	flex-direction: row;
+	height: 50%;
+	width: 100%;
+	gap: 1rem;
+	align-items: center;
+	justify-content: flex-start;
+	padding-left: 10%;
 `;
 
 export const SideBarListingBtn = styled.button`

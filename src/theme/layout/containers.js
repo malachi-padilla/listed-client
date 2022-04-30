@@ -13,9 +13,9 @@ export const MainContainer = styled.div`
 	background-color: ${(props) => props.theme.colors.secondary};
 	@media (max-width: 1023px) {
 		left: 0;
-		right: 0;
-		bottom: 0;
-		width: 100%;
+		top: 0;
+		background-color: ${(props) => props.theme.colors.main};
+		height: calc(100vh - 7vh);
 	}
 `;
 
@@ -32,9 +32,8 @@ export const MainFormContainer = styled.form`
 	background-color: ${(props) => props.theme.colors.main};
 	gap: 1.6rem;
 	@media (max-width: 1023px) {
-		width: 100%;
-		height: 100%;
-		background-color: ${(props) => props.theme.colors.main};
+		background-color: transparent;
+		box-shadow: none;
 	}
 `;
 
@@ -58,4 +57,7 @@ export const MainPageContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	background-color: ${(props) => props.theme.colors.secondary};
+	@media screen and (max-width: 1023px) {
+		background-color: ${(props) => props.theme.colors.main};
+	}
 `;

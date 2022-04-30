@@ -45,6 +45,9 @@ const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 							{sessionStorage.getItem('Auth Token') ? (
 								<>
 									<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
+										<i className='fas fa-bell'></i>
+									</CircleBtn>
+									<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
 										<i className='fas fa-caret-down'></i>
 									</CircleBtn>
 								</>
@@ -74,6 +77,15 @@ const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 					</>
 				) : sessionStorage.getItem('Auth Token') && !isDesktop ? (
 					<>
+						<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
+							<i className='fas fa-plus'></i>
+						</CircleBtn>
+						<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
+							<i className='fas fa-shopping-bag'></i>
+						</CircleBtn>
+						<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
+							<i className='fas fa-bell'></i>
+						</CircleBtn>
 						<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
 							<i className='fas fa-caret-down'></i>
 						</CircleBtn>

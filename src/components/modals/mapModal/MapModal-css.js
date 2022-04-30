@@ -31,11 +31,6 @@ export const MapModalHeaderText = styled(MainHeader)`
 	font-weight: 600;
 `;
 
-export const ExitBtn = styled(CircleBtn)`
-	position: absolute;
-	right: 1rem;
-`;
-
 export const MapModalBody = styled.div`
 	display: flex;
 	flex-direction: column;

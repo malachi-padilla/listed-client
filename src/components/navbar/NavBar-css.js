@@ -3,8 +3,8 @@ import { MainBtn } from '../../theme/btns';
 import { MainInput } from '../../theme/layout/customComponents';
 
 export const NavContainer = styled.div`
-	width: 100vw;
-	height: 7vh;
+	width: 100%;
+	height: 7%;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;

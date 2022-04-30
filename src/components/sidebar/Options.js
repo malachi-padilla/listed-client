@@ -8,7 +8,6 @@ const Options = ({ setRegisterModalOpen }) => {
 	const location = useLocation();
 	const SideBarOptions = [
 		{ name: 'Browse All', path: '/', icon: 'fas fa-store' },
-		{ name: 'Cart', path: '/cart', icon: 'fas fa-shopping-cart' },
 		{ name: 'Buying', path: '/buying', icon: 'fas fa-shopping-bag' },
 		{ name: 'Selling', path: '/selling', icon: 'fas fa-tag' },
 	];

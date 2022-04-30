@@ -10,12 +10,16 @@ export const AppContainer = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-	height: calc(100vh - 7vh);
+	height: 93%;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	position: relative;
+	@media screen and (max-width: 1023px) {
+		flex-direction: column;
+	}
 `;
 
 export const PageContainer = styled.div`
@@ -25,6 +29,8 @@ export const PageContainer = styled.div`
 	justify-content: center;
 	position: relative;
 	@media (max-width: 1023px) {
+		height: 85%;
 		width: 100%;
+		position: unset;
 	}
 `;

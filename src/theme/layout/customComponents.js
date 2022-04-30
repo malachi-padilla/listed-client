@@ -122,3 +122,19 @@ export const RadioLabel = styled.label`
 		background-color: ${(props) => props.theme.colors.medGrey};
 	}
 `;
+
+export const MobileOptionsTab = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: max-content;
+	height: 65%;
+	background-color: ${(props) => props.theme.colors.input};
+	padding-left: 1.4rem;
+	padding-right: 1.4rem;
+	border-radius: 1rem;
+	font-size: 1.6rem;
+	font-weight: 500;
+	color: ${(props) => props.theme.colors.text};
+	cursor: pointer;
+`;

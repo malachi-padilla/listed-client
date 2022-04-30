@@ -7,20 +7,19 @@ import Home from './pages/homepage/Home';
 import Login from './pages/loginPage/Login';
 import Register from './pages/registerPage/Register';
 // eslint-disable-next-line
-import app from './config/firebaseConfig';
 import { getWidth } from './util/functions';
 import Listing from './pages/listingPage/Listing';
-import Cart from './pages/cartPage/Cart';
 import Buying from './pages/buyingPage/Buying';
 import Selling from './pages/sellingPage/Selling';
 import { ThemeProvider } from 'styled-components';
 import { DarkTheme, LightTheme } from './theme/theme';
 import { GlobalStyles } from './GlobalStyles';
+import { useStickyState } from './util/customHooks';
 
 const App = () => {
 	// eslint-disable-next-line
 	const [isDesktop, setIsDesktop] = useState(getWidth);
-	const [isDarkTheme, setIsDarkTheme] = useState(false);
+	const [isDarkTheme, setIsDarkTheme] = useStickyState(false, 'isDarkTheme');
 
 	useEffect(() => {
 		const handleIsDesktop = () => {
@@ -35,14 +34,13 @@ const App = () => {
 			<AppContainer>
 				<NavBar isDesktop={isDesktop} setIsDarkTheme={setIsDarkTheme} isDarkTheme={isDarkTheme} />
 				<ContentContainer>
-					{isDesktop && <Sidebar />}
+					<Sidebar isDesktop={isDesktop} />
 					<PageContainer>
 						<Routes>
 							<Route path='/' element={<Home />} />
 							<Route path='/register' element={<Register />} />
 							<Route path='/login' element={<Login />} />
 							<Route path='/create' element={<Listing />} />
-							<Route path='/cart' element={<Cart />} />
 							<Route path='/buying' element={<Buying />} />
 							<Route path='/selling' element={<Selling />} />
 						</Routes>

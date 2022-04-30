@@ -17,7 +17,7 @@ export const MainBtn = styled.button`
 
 export const CircleBtn = styled(MainBtn)`
 	clip-path: circle(50% at 50% 50%);
-	background-color: ${(props) => (props.isActive ? '#0066ff1d' : props.theme.colors.transparent)};
+	background-color: ${(props) => (props.isActive ? '#0066ff1d' : props.theme.colors.input)};
 	color: ${(props) => (props.isActive ? props.theme.colors.primary : props.theme.colors.text)};
 	height: 2rem;
 	width: 2rem;
@@ -26,5 +26,14 @@ export const CircleBtn = styled(MainBtn)`
 	:hover {
 		background-color: #0066ff1d;
 		color: ${(props) => props.theme.colors.primary};
+	}
+`;
+
+export const ExitBtn = styled(CircleBtn)`
+	position: absolute;
+	right: 1rem;
+	:hover {
+		background-color: #ef233c26;
+		color: ${(props) => props.theme.colors.errorRed};
 	}
 `;

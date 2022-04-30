@@ -31,7 +31,6 @@ const GlobalContext = ({ children }) => {
 				dispatch(setMongoUser(null));
 			}
 		});
-		console.log(mongoUser);
 	}, [user]);
 
 	useEffect(() => {
