@@ -1,14 +1,7 @@
 import styled from 'styled-components';
+import { DynamicSidebarContainer, ScrollBorderContainer } from '../../theme/layout/containers';
 
-export const SideBarContainer = styled.div`
-	height: 100%;
-	width: 40rem;
-	z-index: 2;
-	display: flex;
-	flex-direction: column;
-	box-shadow: 0.5rem 0.1rem 0.6rem -0.5rem rgba(0, 0, 0, 0.1), -0.5rem 0.1rem 0.6rem -0.5rem rgba(0, 0, 0, 0.1);
-	background-color: ${(props) => props.theme.colors.main};
-	position: relative;
+export const SideBarContainer = styled(DynamicSidebarContainer)`
 	@media screen and (max-width: 1023px) {
 		height: 15%;
 		width: 100%;
@@ -46,13 +39,8 @@ export const SearchBarHeaderText = styled.h2`
 	color: ${(props) => props.theme.colors.text};
 `;
 
-export const SearchBar = styled.div`
-	width: 90%;
+export const SearchBar = styled(ScrollBorderContainer)`
 	height: 50%;
-	align-items: center;
-	justify-content: center;
-	border-bottom: ${(props) =>
-		props.scroll !== 0 ? `.1rem solid ${props.theme.colors.medGrey}` : `.1rem solid transparent`};
 `;
 
 export const SearchBarInputWrapper = styled.div`

@@ -9,7 +9,7 @@ export const LogoutModalContainer = styled.div`
 	align-items: center;
 	flex-direction: column;
 	position: absolute;
-	height: 25rem;
+	height: fit-content;
 	width: 85%;
 	background-color: ${(props) => props.theme.colors.main};
 	border: 1px solid ${(props) => props.theme.colors.transparent};
@@ -22,7 +22,7 @@ export const LogoutModalContainer = styled.div`
 	border-radius: 0.7rem;
 	box-shadow: 0.1rem 0.1rem 0.6rem rgba(0, 0, 0, 0.1);
 	gap: 1rem;
-	padding: 0.8rem;
+	padding: 1rem;
 	@media (min-width: 500px) {
 		margin-right: 2rem;
 		width: 35rem;
@@ -39,6 +39,7 @@ export const ProfileBar = styled.div`
 	height: 40%;
 	width: 90%;
 	gap: 1rem;
+	padding: 1rem;
 `;
 
 export const ProfileImg = styled.div`
@@ -94,6 +95,7 @@ export const SettingModalHeader = styled.div`
 	width: 90%;
 	height: 20%;
 	gap: 1.5rem;
+	margin-bottom: 1rem;
 `;
 export const SettingModalHeading = styled(MainHeader)`
 	font-size: 2.4rem;
@@ -124,7 +126,6 @@ export const SettingBoxHeader = styled.div`
 	align-items: center;
 	justify-content: center;
 	gap: 1rem;
-	margin-bottom: 3rem;
 `;
 
 export const SettingTextBox = styled.div`

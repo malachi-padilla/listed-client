@@ -21,8 +21,8 @@ body{
 }
 
   &::-webkit-scrollbar {
-    background-color: transparent;
     width: 7px;
+        background-color: ${(props) => props.theme.colors.main};
   }
   &::-webkit-scrollbar-button {
     background-color: transparent;

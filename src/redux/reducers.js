@@ -1,4 +1,4 @@
-import { SET_ERROR, SET_LOGIN_EMAIL, SET_LOGIN_PASSWORD, SET_MONGO_USER } from './actions';
+import { SET_ERROR, SET_LOGIN_EMAIL, SET_LOGIN_PASSWORD, SET_MONGO_USER, SET_PAGE_OPEN } from './actions';
 const initialState = {
 	loginEmail: '',
 	loginPassword: '',
@@ -31,6 +31,7 @@ const mainReducer = (state = initialState, action) => {
 				...state,
 				mongoUser: action.payload,
 			};
+
 		default:
 			return state;
 	}

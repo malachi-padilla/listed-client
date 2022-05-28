@@ -137,4 +137,12 @@ export const MobileOptionsTab = styled.div`
 	font-weight: 500;
 	color: ${(props) => props.theme.colors.text};
 	cursor: pointer;
+	.fa-plus {
+		margin-left: 5px;
+		color: ${(props) => props.theme.colors.primary};
+	}
 `;
+
+export const MainFileUpload = styled.input``;
+
+export const MainTextArea = styled.textarea``;

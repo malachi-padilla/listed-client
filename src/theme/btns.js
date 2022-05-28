@@ -37,3 +37,13 @@ export const ExitBtn = styled(CircleBtn)`
 		color: ${(props) => props.theme.colors.errorRed};
 	}
 `;
+
+export const SaveDraftBtn = styled(MainBtn)`
+	background-color: ${(props) => props.theme.colors.input};
+	color: ${(props) => props.theme.colors.darkGrey};
+	width: 8rem;
+	cursor: not-allowed;
+	:hover {
+		opacity: 1;
+	}
+`;

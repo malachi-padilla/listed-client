@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import { BtnPrimary, BtnSecondary, Logo, NavContainer, NavContent, NavForm, NavInput, NavBtns } from './NavBar-css';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoginEmailAction, setErrorAction, setLoginPasswordAction } from '../../redux/actions';
@@ -12,6 +12,7 @@ import LogoutModal from '../modals/logoutModal/LogoutModal';
 const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 	const dispatch = useDispatch();
 	let navigate = useNavigate();
+	const location = useLocation();
 	const { error, loginEmail, loginPassword } = useSelector((state) => state);
 	const [modalOpen, setModalOpen] = useState(false);
 	const login = (e) => {
@@ -35,7 +36,12 @@ const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 	};
 
 	return (
-		<NavContainer>
+		<NavContainer location={location.pathname}>
+			{location.pathname !== '/' && (
+				<CircleBtn type='button' onClick={() => navigate(-1)}>
+					<i className='fa-solid fa-arrow-left'></i>
+				</CircleBtn>
+			)}
 			<Logo onClick={() => navigate('/')}>Listed</Logo>
 			<NavContent>
 				<ToastContainer />
@@ -44,7 +50,7 @@ const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 						<NavForm onSubmit={login}>
 							{sessionStorage.getItem('Auth Token') ? (
 								<>
-									<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
+									<CircleBtn type='button'>
 										<i className='fas fa-bell'></i>
 									</CircleBtn>
 									<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
@@ -71,19 +77,19 @@ const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 									<Link to='register'>
 										<BtnSecondary>Sign up</BtnSecondary>
 									</Link>
+									<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
+										<i className='fas fa-caret-down'></i>
+									</CircleBtn>
 								</>
 							)}
 						</NavForm>
 					</>
 				) : sessionStorage.getItem('Auth Token') && !isDesktop ? (
 					<>
-						<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
-							<i className='fas fa-plus'></i>
-						</CircleBtn>
-						<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
+						<CircleBtn type='button'>
 							<i className='fas fa-shopping-bag'></i>
 						</CircleBtn>
-						<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
+						<CircleBtn type='button'>
 							<i className='fas fa-bell'></i>
 						</CircleBtn>
 						<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
@@ -95,6 +101,9 @@ const NavBar = ({ isDesktop, setIsDarkTheme, isDarkTheme }) => {
 						<Link to='login'>
 							<BtnPrimary>Log in</BtnPrimary>
 						</Link>
+						<CircleBtn isActive={modalOpen} type='button' onClick={() => setModalOpen(!modalOpen)}>
+							<i className='fas fa-caret-down'></i>
+						</CircleBtn>
 					</NavBtns>
 				)}
 			</NavContent>

@@ -38,10 +38,8 @@ const LogoutModal = ({ isDarkTheme, setIsDarkTheme, setModalOpen }) => {
 				dispatch(setMongoUser(null));
 				navigate('/');
 				window.location.reload();
-				// successful
 			})
 			.catch((err) => {
-				// An error happened.
 				console.log(err);
 			});
 	};
@@ -77,7 +75,7 @@ const LogoutModal = ({ isDarkTheme, setIsDarkTheme, setModalOpen }) => {
 							</RadioLabel>
 						</SettingBox>
 					</>
-				) : (
+				) : mongoUser ? (
 					<>
 						<ProfileBar>
 							<ProfileImg>
@@ -102,6 +100,18 @@ const LogoutModal = ({ isDarkTheme, setIsDarkTheme, setModalOpen }) => {
 									<i className='fas fa-sign-out-alt'></i>
 								</SettingBarIcon>
 								Log Out
+							</SettingBar>
+						</SettingsContainer>
+					</>
+				) : (
+					<>
+						<SettingsContainer>
+							<SettingBar onClick={() => setSettingModalOpen(true)}>
+								<SettingBarIcon>
+									<i className='fas fa-moon'></i>
+								</SettingBarIcon>
+								Display & Accessibility
+								<SettingBarBtn className='fas fa-chevron-right' />
 							</SettingBar>
 						</SettingsContainer>
 					</>

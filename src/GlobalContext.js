@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { fetchIpData } from './api/ipData';
 import publicIp from 'public-ip';
 import { setMongoUser } from './redux/actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { loginRequest } from './api/userData';
+import app from './config/firebaseConfig';
 
 export const MyContext = createContext({
 	user: null,
@@ -16,9 +17,8 @@ const GlobalContext = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [geoLocation, setGeoLocation] = useState(null);
 	const dispatch = useDispatch();
-	const { mongoUser } = useSelector((state) => state);
+	const auth = getAuth(app);
 
-	const auth = getAuth();
 	useEffect(() => {
 		onAuthStateChanged(auth, (user) => {
 			if (user) {

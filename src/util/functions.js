@@ -1,5 +1,5 @@
-export const onScroll = (scrollState) => {
-	const scrollTop = document.getElementById('sideBarOptions').scrollTop;
+export const onScroll = (scrollState, id) => {
+	const scrollTop = document.getElementById(id).scrollTop;
 	scrollState(scrollTop);
 };
 

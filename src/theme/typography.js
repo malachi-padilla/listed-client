@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const MainHeader = styled.h2`
 	color: ${(props) => props.theme.colors.text};
-	font-size: 3rem;
-	font-weight: 300;
+	font-size: 2.4rem;
+	font-weight: 600;
 `;
 
 export const MainParagraph = styled.p`

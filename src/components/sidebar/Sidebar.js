@@ -51,7 +51,7 @@ const Sidebar = ({ isDesktop }) => {
 				{registerModalOpen && <RegisterModal setRegisterModalOpen={setRegisterModalOpen} />}
 				<SideBarSearchBarContainer>
 					<SearchBarContainerHeader>
-						<SearchBarHeaderText>Shop</SearchBarHeaderText>
+						<SearchBarHeaderText>Listed Marketplace</SearchBarHeaderText>
 					</SearchBarContainerHeader>
 					<SearchBar scroll={scroll}>
 						<SearchBarInputWrapper>
@@ -67,7 +67,7 @@ const Sidebar = ({ isDesktop }) => {
 					</SearchBar>
 					{searchModalOpen && <SearchModal />}
 				</SideBarSearchBarContainer>
-				<SidebarOptionsContainer id='sideBarOptions' onScroll={() => onScroll(setScroll)}>
+				<SidebarOptionsContainer id='sideBarOptions' onScroll={() => onScroll(setScroll, 'sideBarOptions')}>
 					<SidebarOptions>
 						<Options setRegisterModalOpen={setRegisterModalOpen} />
 						<SideBarListingBtn onClick={() => handleBtnClick()}>
@@ -90,7 +90,7 @@ const Sidebar = ({ isDesktop }) => {
 							<i className='fas fa-user'></i>
 						</MobileOptionsTab>
 						<MobileOptionsTab as={NavLink} to={user ? '/create' : '/login'}>
-							Sell
+							Create <i className='fas fa-plus'></i>
 						</MobileOptionsTab>
 						<MobileOptionsTab onClick={() => setCategoryModalOpen(true)}>All Categories</MobileOptionsTab>
 					</MobileOptionsBar>

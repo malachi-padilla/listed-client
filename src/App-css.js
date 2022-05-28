@@ -29,7 +29,7 @@ export const PageContainer = styled.div`
 	justify-content: center;
 	position: relative;
 	@media (max-width: 1023px) {
-		height: 85%;
+		height: 100%;
 		width: 100%;
 		position: unset;
 	}

@@ -7,36 +7,35 @@ export const NavContainer = styled.div`
 	height: 7%;
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: space-between;
 	z-index: 10;
 	box-shadow: 0.1rem 0.1rem 0.6rem rgba(0, 0, 0, 0.1);
-	background-color: ${(props) => props.theme.colors.main};
-	border-bottom: 1px solid ${(props) => props.theme.colors.transparent};
-	position: relative;
+	background-color: ${(props) => (props.location === '/create' ? props.theme.colors.main : props.theme.colors.main)};
+	border-bottom: ${(props) => `1px solid ${props.theme.colors.transparent}`};
+	position: sticky;
+	top: 0;
+	padding-left: 1rem;
+	gap: 1rem;
 `;
 
 export const NavContent = styled.div`
 	height: 100%;
-	width: 90%;
+	width: fit-content;
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-end;
 	align-items: center;
 	gap: 1rem;
 	padding-right: 1rem;
-	@media (max-width: 1023px) {
-		width: 90%;
-	}
 `;
 
 export const Logo = styled.div`
-	width: 10%;
+	width: fit-content;
 	color: ${(props) => props.theme.colors.primary};
 	font-size: 3.5rem;
 	text-transform: lowercase;
 	font-family: 'Fugaz One', cursive;
 	cursor: pointer;
-	padding-left: 1rem;
+	flex-grow: 1;
 `;
 
 export const NavForm = styled.form`
